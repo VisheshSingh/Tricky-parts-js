@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabs</title>
+    <link rel="stylesheet" href="base.css" />
+    <style>
+      .tabs {
+        display: grid;
+      }
+
+      [role='tablist'] {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 10px;
+      }
+
+      [role='tabpanel'] {
+        background: var(--yellow);
+        padding: 2rem;
+        color: black;
+      }
+
+      button {
+        background: var(--grey);
+        border: 0;
+        color: black;
+        border-radius: 5px 5px 0 0;
+        --bs-color: rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 -2px 5px var(--bs-color);
+        cursor: pointer;
+      }
+
+      button[aria-selected='true'] {
+        background: var(--yellow);
+        box-shadow: none;
+        color: rgba(0, 0, 0, 0.7);
+      }
+
+      button:focus {
+        outline: 0;
+        --bs-color: rgba(0, 0, 0, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="tabs">
+        <div role="tablist" aria-label="programming languages">
+          <button role="tab" aria-selected="true" id="js">JavaScript</button>
+          <button role="tab" aria-selected="false" id="react">React</button>
+          <button role="tab" aria-selected="false" id="vue">Vue.js</button>
+        </div>
+        <div role="tabpanel" aria-labelledby="js">
+          <p>JavaScript is great!</p>
+        </div>
+        <div role="tabpanel" aria-labelledby="react" hidden>
+          <p>React is awesome</p>
+        </div>
+        <div role="tabpanel" aria-labelledby="vue" hidden>
+          <p>Vue is sweet</p>
+        </div>
+      </div>
+    </div>
+    <script src="tabs.js"></script>
+  </body>
+</html>
